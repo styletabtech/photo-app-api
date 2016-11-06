@@ -1,1 +1,1 @@
-curl --include --request GET http://localhost:3000/photos/1
+curl --include --request GET http://localhost:3000/photos/7
