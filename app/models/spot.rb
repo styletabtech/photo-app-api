@@ -1,4 +1,4 @@
 class Spot < ActiveRecord::Base
-  belongs_to :user
-  has_many :photo
+  has_many :users, through: :photos
+  has_many :photos
 end
