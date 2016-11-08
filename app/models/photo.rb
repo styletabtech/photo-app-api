@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  belongs_to :user, dependent: :destroy
+  belongs_to :user # dependent: :destroy
   has_attached_file :photo_upload,
             :styles => { :medium => "300x300>", :thumb => "100x100>" },
             :default_url => "/images/:style/missing.png"
