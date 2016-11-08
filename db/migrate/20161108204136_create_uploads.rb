@@ -1,7 +1,6 @@
-class CreatePhotos < ActiveRecord::Migration
+class CreateUploads < ActiveRecord::Migration
   def change
-    create_table :photos do |t|
-      t.string :file_name
+    create_table :uploads do |t|
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false

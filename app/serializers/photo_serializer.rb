@@ -1,9 +1,5 @@
 class PhotoSerializer < ActiveModel::Serializer
-  attributes :id, :file_name, :photo_upload_url, :editable
-  has_one :user
+  attributes :id
   has_one :spot
-
-  def editable
-    scope == object.user
-  end
+  has_one :upload
 end

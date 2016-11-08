@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108161838) do
+ActiveRecord::Schema.define(version: 20161108205258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,19 +26,14 @@ ActiveRecord::Schema.define(version: 20161108161838) do
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
-    t.string   "file_name"
-    t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "photo_upload_file_name"
-    t.string   "photo_upload_content_type"
-    t.integer  "photo_upload_file_size"
-    t.datetime "photo_upload_updated_at"
     t.integer  "spot_id"
+    t.integer  "upload_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "photos", ["spot_id"], name: "index_photos_on_spot_id", using: :btree
-  add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
+  add_index "photos", ["upload_id"], name: "index_photos_on_upload_id", using: :btree
 
   create_table "spots", force: :cascade do |t|
     t.string   "name"
@@ -50,7 +45,22 @@ ActiveRecord::Schema.define(version: 20161108161838) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "tag"
+    t.integer  "user_id"
   end
+
+  add_index "spots", ["user_id"], name: "index_spots_on_user_id", using: :btree
+
+  create_table "uploads", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "uploads", ["user_id"], name: "index_uploads_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -65,5 +75,7 @@ ActiveRecord::Schema.define(version: 20161108161838) do
 
   add_foreign_key "examples", "users"
   add_foreign_key "photos", "spots"
-  add_foreign_key "photos", "users"
+  add_foreign_key "photos", "uploads"
+  add_foreign_key "spots", "users"
+  add_foreign_key "uploads", "users"
 end
