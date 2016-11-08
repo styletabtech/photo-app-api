@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108150030) do
+ActiveRecord::Schema.define(version: 20161108154108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,10 @@ ActiveRecord::Schema.define(version: 20161108150030) do
     t.string   "photo_upload_content_type"
     t.integer  "photo_upload_file_size"
     t.datetime "photo_upload_updated_at"
+    t.integer  "spot_id"
   end
 
+  add_index "photos", ["spot_id"], name: "index_photos_on_spot_id", using: :btree
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
   create_table "spots", force: :cascade do |t|
@@ -61,5 +63,6 @@ ActiveRecord::Schema.define(version: 20161108150030) do
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
 
   add_foreign_key "examples", "users"
+  add_foreign_key "photos", "spots"
   add_foreign_key "photos", "users"
 end
