@@ -2,15 +2,24 @@
 
 # Photo App - API
 
-# Wireframes
 
-# User Stories
+# ERD:
+https://www.lucidchart.com/documents/view/db2596de-715f-4557-86ef-406bc356804d
 
-# Approach
 
 # Client
+Repo: https://github.com/styletabtech/snapspot
 
 ## API
+
+# Install Dependencies
+
+Install with `bundle install`.
+
+Additional dependencies
+
+ImageMagick (install with brew install imagemagick)
+paperclip: https://github.com/thoughtbot/paperclip
 
 Use this as the basis for your own API documentation. Add a new third-level
 heading for your custom entities, and follow the pattern provided for the
