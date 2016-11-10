@@ -1,4 +1,4 @@
-class UploadsController < ApplicationController
+class UploadsController < ProtectedController
   before_action :set_upload, only: [:show, :update, :destroy]
 
   # GET /uploads
@@ -18,7 +18,7 @@ class UploadsController < ApplicationController
   # POST /uploads
   # POST /uploads.json
   def create
-    @upload = Upload.new(upload_params)
+    @upload = current_user.uploads.build(upload_params)
 
     if @upload.save
       render json: @upload, status: :created, location: @upload

@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class PhotosController < ProtectedController
   before_action :set_photo, only: [:show, :update, :destroy]
 
   # GET /photos
@@ -18,7 +18,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params)
+    @photo = current_user.photos.build(photo_params)
 
     if @photo.save
       render json: @photo, status: :created, location: @photo

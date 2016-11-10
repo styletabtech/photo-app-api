@@ -14,7 +14,7 @@ curl --include --request POST http://localhost:3000/uploads \
     -H 'Content-Type: multipart/form-data' \
     -H 'Accept: application/json' \
     -F "upload[user_id]=4" \
-    -F "upload[image]=@kitten.jpg;type=image/jpg"
+    -F "upload[image]=@sloth.jpg;type=image/jpg"
 
 # sloth
 

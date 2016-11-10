@@ -2,7 +2,7 @@ class SpotSerializer < ActiveModel::Serializer
   attributes :id, :name, :address, :city, :state, :zip, :description, :user, :uploads, :photos
 
   def user
-    object.user.id
+    object.user_id
   end
 
   def uploads
