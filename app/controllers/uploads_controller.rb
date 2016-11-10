@@ -1,5 +1,6 @@
-class UploadsController < ProtectedController
+class UploadsController < OpenReadController
   before_action :set_upload, only: [:show, :update, :destroy]
+  # before_action :set_current_user, only: [:destroy]
 
   # GET /uploads
   # GET /uploads.json
@@ -48,6 +49,10 @@ class UploadsController < ProtectedController
   end
 
   private
+
+    # def set_current_user
+    # @current_user_id = current_user_id
+    # end
 
     def set_upload
       @upload = Upload.find(params[:id])

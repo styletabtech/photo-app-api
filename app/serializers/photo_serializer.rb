@@ -14,4 +14,5 @@ class PhotoSerializer < ActiveModel::Serializer
   def upload
     object.upload_id
   end
+
 end

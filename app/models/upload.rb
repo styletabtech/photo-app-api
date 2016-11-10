@@ -1,6 +1,6 @@
 class Upload < ActiveRecord::Base
   belongs_to :user
-  has_many :photos
+  has_many :photos, dependent: :destroy
   has_many :spots, through: :photos
 
   has_attached_file :image,  #Or whatever you want to call the image you're imageing.

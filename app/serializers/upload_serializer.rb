@@ -1,5 +1,5 @@
 class UploadSerializer < ActiveModel::Serializer
-  attributes :id, :image_url, :photos, :spots, :user
+  attributes :id, :image_url, :photos, :spots, :user, :editable
   # attributes :id, :image_url, :photos, :spots
   # has_one :user
 
@@ -7,9 +7,9 @@ class UploadSerializer < ActiveModel::Serializer
     object.user_id
   end
 
-  # def photos
-  #   object.photo.id
-  # end
+  def editable
+    scope == object.user
+  end
 
   def spots
     object.spots.pluck(:id)

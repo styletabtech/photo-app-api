@@ -1,4 +1,4 @@
-class PhotosController < ProtectedController
+class PhotosController < OpenReadController
   before_action :set_photo, only: [:show, :update, :destroy]
 
   # GET /photos
