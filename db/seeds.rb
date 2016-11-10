@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create({
-    {email: 'test@test.com', password: '123', password_confirmation: nil}
-  })
+User.create([
+    {email: 'test@test.com', password: '123', password_confirmation: '123' },
+  ])
 
 spots = Spot.create([
               { name: 'Boston Public Garden',
